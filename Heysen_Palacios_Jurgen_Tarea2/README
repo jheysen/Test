@@ -26,7 +26,6 @@ Errores conocidos:
 	Algunas fases no actúan como lo dice el enunciado
 		El ataque 7 y la carta 7 no han sido implementados
 		Error misterioso en la carta 6, no dibuja el anillo
-		Error en carta 5, no calcula el ángulo como debiese
 		Las balas que deben rebotar no lo hacen correctamente
 	Los Súbditos del enemigo no aparecen donde deben, tampoco se mueven.
 	

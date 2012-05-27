@@ -318,7 +318,7 @@ public class BossIA extends BaseIA{
 						}
 					}
 					for(int i=0;i<auxvect.getSize();i++){
-						auxvect.at(i).setRad(Physic.getAngle(auxvect.at(i), nave));
+						auxvect.at(i).setRad(Physic.getAngle(nave,auxvect.at(i)));
 					}
 					auxvect=new BulletVector();
 					auxvar=0;

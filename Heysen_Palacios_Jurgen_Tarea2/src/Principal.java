@@ -179,6 +179,11 @@ public class Principal {
 				hasCrashed=false; //reseteamos este marcador para cada fase
 				bossinvul=true; //Cambiamos de fase, así que lo hacemos invulnerable
 				bossinvultick=0;//Y empezaremos a contar cuantos cuadros de invulnerabilidad lleva
+				//a ver si esto ayuda con los subditos que no se mueven...
+				es1.pos.x=jefe.pos.x;
+				es1.pos.y=jefe.pos.y;
+				es2.pos.x=jefe.pos.x;
+				es2.pos.y=jefe.pos.y;
 			}
 			
 			//regulamos la invulnerabilidad del boss
@@ -269,12 +274,18 @@ public class Principal {
 				gui.gameOver(false, (int)nave.getPositionX(), (int)nave.getPositionY());
 				p.setDelay(Config.MillisWaitOnDie);
 				gameflow=false;
+				board[(int) nave.pos.x][(int) nave.pos.y]=0; //La quitamos para que no se vea luego de la explosion
 				new InputOutput().muestra("Lamenablemente, has perdido");
 			}
 			if(jefe.getBars()==-1 || malvado.getPhase()>Config.numphases){ //Si murió el jefe...
 				gui.gameOver(true, (int)jefe.getPosition().getX(), (int)jefe.getPosition().getY());
 				p.setDelay(Config.MillisWaitOnDie);
 				gameflow=false;
+				gui.blast((int)es1.pos.x, (int)es1.pos.y); //hacemos que exploten los subditos tambien
+				gui.blast((int)es2.pos.x, (int)es2.pos.y);
+				board[(int) jefe.pos.x][(int) jefe.pos.y]=0; //Los quitamos para que no se ven luego de la explosión
+				board[(int) es1.pos.x][(int) es1.pos.y]=0;
+				board[(int) es2.pos.x][(int) es2.pos.y]=0;
 				new InputOutput().muestra("Felicitaciones, has ganado!");
 			}
 		}

@@ -95,7 +95,7 @@ public class Bullet extends Entity{
 			this.pos.x+=vel*Math.cos(rad);
 			this.pos.y-=vel*Math.sin(rad);
 			if(Math.sqrt(Math.pow(pos.x-init.x,2)+Math.pow(pos.y-init.y, 2))>=150){
-				rad=-1.0*Physic.getAngle(this, nave);
+				rad=-1.0*Physic.getAngle(nave,this);
 				parametric=1;
 			}
 			break;
@@ -109,7 +109,7 @@ public class Bullet extends Entity{
 			break;
 		case 7: //DNA
 			this.pos.x+=vel*Math.cos(rad);
-			this.pos.y-=vel*Math.sin(rad+t*rotation);
+			this.pos.y-=vel*2*Math.sin(rad+t*rotation);
 			break;
 		case 8: //Bala que rebota una vez
 			this.pos.x+=vel*Math.cos(rad);

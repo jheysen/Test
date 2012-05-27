@@ -41,10 +41,10 @@ public class Shot {
 			v.at(v.getSize()-1).setRotation(rotation);
 		}
 	}
-	public static void DNAShot(BulletVector v,double spd,double angle){
-		v.PushBack(new Bullet(new Position(),2,7,angle,spd));
+	public static void DNAShot(BulletVector v,double spd,double angle,double x,double y){
+		v.PushBack(new Bullet(new Position(x,y),2,7,angle,spd));
 		v.at(v.getSize()-1).setRotation(Math.PI/6);
-		v.PushBack(new Bullet(new Position(),3,7,angle,spd));
+		v.PushBack(new Bullet(new Position(x,y),3,7,angle,spd));
 		v.at(v.getSize()-1).setRotation(-1.0*Math.PI/6);
 	}
 	public static void RandomBounceShot(BulletVector v,double spd,int cant){

@@ -8,8 +8,8 @@ public class SlaveIA extends BaseIA{
 	private int[] tipo1={1,2,3,4,5,6};
 	private int[] tipo2={5,4,6,2,1,3};
 	private int currentpos;
-	private int velx;
-	private int vely;
+	private double velx;
+	private double vely;
 	private Entity nave;
 	private int currframes;
 	private int t;
@@ -133,31 +133,43 @@ public class SlaveIA extends BaseIA{
 			break;
 		}
 		//Si hay que moverse, calculamos las velocidades
-		if(oldpos!=currentpos){
+		if(oldpos==currentpos){
 			switch(movement[currentpos]){
 			case 1:
-				velx=(int) (Math.abs(ent.pos.x-(boss.pos.x+30))/60);
-				vely=(int) (Math.abs(ent.pos.y-boss.pos.y)/60);
+				//velx= (Math.abs(ent.pos.x-(boss.pos.x+30))/60);
+				//vely= (Math.abs(ent.pos.y-boss.pos.y)/60);
+				velx=1.0;
+				vely=1.0;
 				break;
 			case 2:
-				velx=(int) (Math.abs(ent.pos.x-(boss.pos.x-50))/60);
-				vely=(int) (Math.abs(ent.pos.y-(boss.pos.y+40))/60);
+				velx= (Math.abs(ent.pos.x-(boss.pos.x-50))/60);
+				vely= (Math.abs(ent.pos.y-(boss.pos.y+40))/60);
+				velx=1.0;
+				vely=1.0;
 				break;
 			case 3:
-				velx=(int) (Math.abs(ent.pos.x-(boss.pos.x-40))/60);
-				vely=(int) (Math.abs(ent.pos.y-(boss.pos.y-30))/60);
+				velx= (Math.abs(ent.pos.x-(boss.pos.x-40))/60);
+				vely= (Math.abs(ent.pos.y-(boss.pos.y-30))/60);
+				velx=1.0;
+				vely=1.0;
 				break;
 			case 4:
-				velx=(int) (Math.abs(ent.pos.x-(boss.pos.x+50))/60);
-				vely=(int) (Math.abs(ent.pos.y-(boss.pos.y+40))/60);
+				velx= (Math.abs(ent.pos.x-(boss.pos.x+50))/60);
+				vely= (Math.abs(ent.pos.y-(boss.pos.y+40))/60);
+				velx=1.0;
+				vely=1.0;
 				break;
 			case 5:
-				velx=(int) (Math.abs(ent.pos.x-(boss.pos.x-30))/60);
-				vely=(int) (Math.abs(ent.pos.y-boss.pos.y)/60);
+				velx= (Math.abs(ent.pos.x-(boss.pos.x-30))/60);
+				vely= (Math.abs(ent.pos.y-boss.pos.y)/60);
+				velx=1.0;
+				vely=1.0;
 				break;
 			case 6:
-				velx=(int) (Math.abs(ent.pos.x-(boss.pos.x+40))/60);
-				vely=(int) (Math.abs(ent.pos.y-boss.pos.y-30)/60);
+				velx= (Math.abs(ent.pos.x-(boss.pos.x+40))/60);
+				vely= (Math.abs(ent.pos.y-boss.pos.y-30)/60);
+				velx=1.0;
+				vely=1.0;
 				break;
 			}
 		}
@@ -168,11 +180,11 @@ public class SlaveIA extends BaseIA{
 			ent.setSprite(27);
 			break;
 		case 16:
-			if(onPosition) Shot.DNAShot(balas, 2.0, Physic.getAngle(nave, ent));
+			if(!onPosition && t%3==0) Shot.DNAShot(balas, 2.0, Physic.getAngle(nave, ent),ent.pos.x,ent.pos.y);
 			ent.setSprite(27);
 			break;
 		default:
-			ent.setSprite(0);
+			//ent.setSprite(0);
 			break;
 		}
 		
