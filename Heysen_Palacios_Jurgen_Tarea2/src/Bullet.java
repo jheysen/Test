@@ -95,12 +95,12 @@ public class Bullet extends Entity{
 			this.pos.x+=vel*Math.cos(rad);
 			this.pos.y-=vel*Math.sin(rad);
 			if(Math.sqrt(Math.pow(pos.x-init.x,2)+Math.pow(pos.y-init.y, 2))>=150){
-				rad=Physic.getAngle(this, nave);
+				rad=-1.0*Physic.getAngle(this, nave);
 				parametric=1;
 			}
 			break;
 		case 6: //Trayectoria recta por 150 y luego gira
-			rotation=2*Math.PI/100;
+			rotation=2*Math.PI/1024;
 			this.pos.x+=vel*Math.cos(rad);
 			this.pos.y-=vel*Math.sin(rad);
 			if(Math.sqrt(Math.pow(pos.x-init.x,2)+Math.pow(pos.y-init.y, 2))>=150){

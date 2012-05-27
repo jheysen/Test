@@ -12,6 +12,7 @@ public class SlaveIA extends BaseIA{
 	private int vely;
 	private Entity nave;
 	private int currframes;
+	private int t;
 	
 	public SlaveIA(Slave e,Entity b,Entity n,int tipo){
 		this.ent=e;
@@ -21,6 +22,7 @@ public class SlaveIA extends BaseIA{
 		else movement = tipo2;
 		currentpos=movement[0];
 		currframes=0;
+		t=0;
 	}
 	
 	public void UpdateBullets(BulletVector v){
@@ -38,6 +40,7 @@ public class SlaveIA extends BaseIA{
 	
 	@Override
 	public int IAaction(){
+		t++; //Un pequeño contador de ayuda
 		//Primero movemos a nuestros esclavos
 		boolean onPosition=false;
 		int oldpos=currentpos;
@@ -161,7 +164,7 @@ public class SlaveIA extends BaseIA{
 		//Luego hacemos que ataquen
 		switch(phase){
 		case 15:
-			if(!onPosition)balas.PushBack(new Bullet(new Position(ent.pos.x,ent.pos.y),3,1,Physic.getAngle(nave, ent),2.0));
+			if(!onPosition && t%10==0)balas.PushBack(new Bullet(new Position(ent.pos.x,ent.pos.y),3,1,Physic.getAngle(nave, ent),2.0)); //Le ponemos una limitante para que sea posible esquivar estas balas
 			ent.setSprite(27);
 			break;
 		case 16:

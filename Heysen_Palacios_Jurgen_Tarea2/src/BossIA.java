@@ -331,13 +331,13 @@ public class BossIA extends BaseIA{
 			if(ent.pos.x>Config.BossSteadyX) ent.pos.x-=Config.BossMovementSpeed;
 			if(ent.pos.x<Config.BossSteadyX) ent.pos.x+=Config.BossMovementSpeed;
 			if(tick%30==0){ //Frecuencia 0.5Hz
-				Shot.CircularShotMutant(balas, (int)this.ent.pos.x, (int)this.ent.pos.y, 0.0, 0.1, 26);
+				Shot.CircularShotMutant(balas, (int)this.ent.pos.x, (int)this.ent.pos.y, 0.0, 1.0, 26);
 			}
 			if((tick+6)%30==0){ //Frecuencia 0.5Hz y con desfase 0.1Hz
-				Shot.CircularShotMutant(balas, (int)this.ent.pos.x, (int)this.ent.pos.y, 0.0, 0.1, 26);
+				Shot.CircularShotMutant(balas, (int)this.ent.pos.x, (int)this.ent.pos.y, 0.0, 1.0, 26);
 			}
 			if((tick+12)%30==0){
-				Shot.CircularShotMutant(balas, (int)this.ent.pos.x, (int)this.ent.pos.y, 0.0, 0.1, 26);
+				Shot.CircularShotMutant(balas, (int)this.ent.pos.x, (int)this.ent.pos.y, 0.0, 1.0, 26);
 				tick=0;
 			}
 			break;
