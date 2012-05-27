@@ -64,14 +64,7 @@ public class Physic {
 	 * @return Valor en radianes del angulo entre ellas
 	 */
 	public static double getAngle(Entity a,Entity b){
-		/*if(a.getPosition().x==b.getPosition().x && a.getPosition().y>b.getPosition().y) return 3*Math.PI/4;
-		if(a.getPosition().x==b.getPosition().x && a.getPosition().y<b.getPosition().y) return Math.PI/4;
-		if(a.getPosition().y==b.getPosition().y && a.getPosition().x>b.getPosition().x) return 0.0;
-		if(a.getPosition().y==b.getPosition().y && a.getPosition().x<b.getPosition().x) return Math.PI;
-		if(a.getPosition().x==b.getPosition().x && a.getPosition().y==b.getPosition().y) return 0.0; //Uno nunca sabe
-		double theta = Math.atan((a.getPosition().y-b.getPosition().y)/(a.getPosition().x-b.getPosition().x));
-		if(a.getPosition().y>b.getPosition().y) theta*=-1.0;
-		return theta;*/
+		//Básicamente, usamos el método con parámetros del tipo double para hacer el trabajo, solo que esta forma de llamar es más cómoda
 		return getAngle(a.pos.x,a.pos.y,b.pos.x,b.pos.y);
 	}
 	/**
@@ -85,8 +78,10 @@ public class Physic {
 	public static double getAngle(double ax,double ay,double bx,double by){
 		//a define el movil,, b define el centro
 		//Primero los casos triviales
-		if(ax==bx && ay>by) return 3*Math.PI/4;
-		if(ax==bx && ay<by) return Math.PI/4;
+		//Experimentalmente llegué a que este era el offset para este caso trivial
+		if(ax==bx && ay>by) return 3*Math.PI/4+3*Math.PI/4;
+		if(ax==bx && ay<by) return Math.PI/4+Math.PI/4;
+		
 		if(ay==by && ax>bx) return Math.PI;
 		if(ay==by && ax<bx) return 0.0;
 		if(ax==bx && ay==by) return 0.0; //Uno nunca sabe

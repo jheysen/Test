@@ -75,7 +75,7 @@ public class BossIA extends BaseIA{
 					double y = pos.y - Math.sin(i*alpha)*0;
 					balas.PushBack(new Bullet(new Position(x,y),15,1,i*alpha,1.0));
 				}*/
-				Shot.CircularShot(balas, (int)ent.getPosition().x, (int)ent.getPosition().y, 0.0, 0.5, 26);
+				Shot.CircularShot(balas, (int)ent.getPosition().x, (int)ent.getPosition().y, 0.0, 2.125, 26);
 				for(int i=balas.getSize()-26;i<balas.getSize();i++){
 					balas.at(i).setColor(20);
 				}
@@ -258,7 +258,7 @@ public class BossIA extends BaseIA{
 			//balas.PushBack(new Bullet(new Position((int)ent.pos.x+Math.cos(2*tick*Math.PI/8),(int)ent.pos.y+Math.sin(2*tick*Math.PI/8)),4,1,-1.0*(tick+13)*2*Math.PI/100,3.0));
 			//balas.PushBack(new Bullet(new Position((int)ent.pos.x+Math.cos(2*tick*Math.PI/8),(int)ent.pos.y+Math.sin(2*tick*Math.PI/8)),3,1,(tick+26)*2*Math.PI/100,3.0));
 			//balas.PushBack(new Bullet(new Position((int)ent.pos.x+Math.cos(2*tick*Math.PI/8),(int)ent.pos.y+Math.sin(2*tick*Math.PI/8)),4,1,-1.0*(tick+26)*2*Math.PI/100,3.0));
-			if(tick%10==0)
+			if(tick%5==0) //Se ve menos el giro de las espirales, pero si no queda impossibru
 			for(int i=0;i<8;i++){
 				balas.PushBack(new Bullet(new Position((int)ent.pos.x+Math.cos(2*tick*Math.PI/8),(int)ent.pos.y+Math.sin(2*tick*Math.PI/8)),3,1,(tick+128*i)*2*Math.PI/1024,2.0));
 				balas.PushBack(new Bullet(new Position((int)ent.pos.x+Math.cos(2*tick*Math.PI/8),(int)ent.pos.y+Math.sin(2*tick*Math.PI/8)),4,1,-1.0*(tick+128*i)*2*Math.PI/1024,2.0));
@@ -354,13 +354,14 @@ public class BossIA extends BaseIA{
 			if(ent.pos.y<Config.minY+100){
 				ent.pos.y+=Config.BossMovementSpeed;
 			}
-			int centrox=rnd.entero((int)Config.minX, (int)Config.maxX);
+			int centrox=rnd.entero((int)Config.minX, (int)Config.maxX); //Ponemos el arco mental, más como coordenada x aleatoria
 			if(auxvect.getSize()==0){ //cuando no hemos comenzado a trazar un anillo
 				auxvect.PushBack(new Bullet(new Position(centrox+70*Math.cos(2*auxvect.getSize()*Math.PI/40),(Math.sqrt(Math.pow(60, 2)-Math.pow(centrox, 2)))-70*Math.sin(2*auxvect.getSize()*Math.PI/40)),8,9,2*auxvect.getSize()*Math.PI/40,0.0));
 				balas.PushBack(auxvect.at(auxvect.getSize()-1));
 			}
 			else{ //si no
-				auxvect.PushBack(new Bullet(new Position(centrox+70*Math.cos(2*auxvect.getSize()*Math.PI/40),Math.sqrt(Math.pow(60, 2)-Math.pow(auxvect.at(0).pos.x, 2))-70*Math.sin(2*auxvect.getSize()*Math.PI/40)),8,9,2*auxvect.getSize()*Math.PI/40,0.0));
+				//auxvect.PushBack(new Bullet(new Position(centrox+70*Math.cos(2*auxvect.getSize()*Math.PI/40),Math.sqrt(Math.pow(60, 2)-Math.pow(auxvect.at(0).pos.x, 2))-70*Math.sin(2*auxvect.getSize()*Math.PI/40)),8,9,2*auxvect.getSize()*Math.PI/40,0.0));
+				auxvect.PushBack(new Bullet(new Position(auxvect.at(0).pos.x-70*Math.cos(0)+70*Math.cos(2*auxvect.getSize()*Math.PI/40),Math.sqrt(Math.pow(60, 2)-Math.pow(auxvect.at(0).pos.x, 2))-70*Math.sin(2*auxvect.getSize()*Math.PI/40)),8,9,2*auxvect.getSize()*Math.PI/40,0.0));
 				balas.PushBack(auxvect.at(auxvect.getSize()-1));
 				if(auxvect.getSize()==40){ //cuando termina de trazar, dispara
 					for(int i=0;i<auxvect.getSize();i++){
@@ -377,7 +378,7 @@ public class BossIA extends BaseIA{
 			break;
 		case 15: //Ataque 8
 			if(tick%60==0){ //Cada un segundo emite un circulo
-				Shot.CircularShot(balas, (int)this.ent.pos.x, (int)this.ent.pos.y, 0.0, 1.0, 16);
+				Shot.CircularShot(balas, (int)this.ent.pos.x, (int)this.ent.pos.y, 0.0, 2.0, 16);
 				tick=0;
 			}
 			break;
@@ -387,7 +388,7 @@ public class BossIA extends BaseIA{
 			if(auxvect.getSize()==40){ //cuando termina de trazar, dispara
 				for(int i=0;i<auxvect.getSize();i++){
 					auxvect.at(i).setRad(Physic.getAngle(nave,auxvect.at(i)));
-					auxvect.at(i).setVel(1.0);
+					auxvect.at(i).setVel(1.5);
 				}
 				auxvect=new BulletVector();
 			}

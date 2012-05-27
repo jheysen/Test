@@ -281,6 +281,8 @@ public class Principal {
 		//Probablemente termino el juego
 		for(int i=0;i<180;i++){ //Esperamos 3 segs para que se vea la animación
 			p.setDelay(16);
+			gui.update(board); 
+			gui.show(); 
 		}
 		gui.dispose(); //Cerramos la ventana
 

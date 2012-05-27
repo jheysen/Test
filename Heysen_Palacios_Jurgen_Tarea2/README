@@ -25,8 +25,8 @@ Errores conocidos:
 	Si la nave se ubica en la misma coordenada x que una entidad, al calcular el ángulo entre ellas, éste no es correcto. Al moverse un poco si se obtiene el ángulo correcto.
 	Algunas fases no actúan como lo dice el enunciado
 		El ataque 7 y la carta 7 no han sido implementados
-	Los Súbditos del enemigo no han sido implementados.
-	Al finalizar el juego, ya sea por agotar las vidas o vencer al oponente, en lugar de mostrarse un mensaje y animación, la ventana no muestra actividad durante algunos segundos y luego sólo se cierra.
+	Los Súbditos del enemigo no aparecen donde deben, tampoco se mueven.
+	
 	
 	
 Al cambiar de fase, aparece un mensaje en la consola con el número de fase actual.
