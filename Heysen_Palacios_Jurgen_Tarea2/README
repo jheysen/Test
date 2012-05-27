@@ -1,0 +1,34 @@
+Sobre la configuración del juego:
+
+La clase Config encontrada en los archivos fuentes del juego establece una serie de parámetros que afectan al programa en su totalidad, dentro de ésta se encuentra comentado cada parámetro en particular.
+Es de interés los parámetros finales, ya que permiten hacer una vista general del juego desactivando ciertas mecánicas:
+
+	GodMode desactiva la detección por colisiones, pero aún se puede morir por sobrecalentamiento del laser.
+	NoHeat desactiva completamente la mecánica de temperatura del láser
+	NoLaserDeath desactiva el morir por sobrecalentar el láser.
+	NoLaserLock desactiva el bloqueo del laser al pasar el umbral de 75% de temperatura
+	CheatKeyNextPhase activa una mecánica en la que al presionar la tecla r el jefe pierde todo su hp actual instantáneamente, se debe tener cuidado ya que puede saltar más de una fase si se presiona prolongadamente.
+	APLimitUses Permite activar o desactivar el límite de un uso del Piloto Automático por vida
+	
+Los otros parámetros podrían alterar el correcto funcionamiento del juego, en lo posible no modificar.
+
+
+Se ha utlizado heredado de clases en el desarrollo de la tarea, esto con la intención de ordenar un poco clases que cumplen finalidades similares y al mismo tiempo hacer algo más general ciertos métodos.
+Especificamente, se tiene como clases Base a Entity y a BaseIA.
+	Entity agrupa a las balas, nave, jefe y subditos de este en su relación como objetos visibles y colisionables.
+	BaseIA proporciona una guía para realizar la Inteligencia Artificial de la nave (Piloto automático), jefe y súbditos.
+	
+Errores conocidos:
+
+	El piloto automático no es muy inteligente.
+	El jefe aparece desde un comienzo en su posición y comeienza a atacar
+	Si la nave se ubica en la misma coordenada x que una entidad, al calcular el ángulo entre ellas, éste no es correcto. Al moverse un poco si se obtiene el ángulo correcto.
+	Algunas fases no actúan como lo dice el enunciado
+		El ataque 7 y la carta 7 no han sido implementados
+	Los Súbditos del enemigo no han sido implementados.
+	Al finalizar el juego, ya sea por agotar las vidas o vencer al oponente, en lugar de mostrarse un mensaje y animación, la ventana no muestra actividad durante algunos segundos y luego sólo se cierra.
+	
+	
+Al cambiar de fase, aparece un mensaje en la consola con el número de fase actual.
+
+IMPORTANTE: Se ha subido el proyecto SIN LAS LIBRERIAS iic1103.jar e iic1103T2.jar, debido a limitaciones de espacio del sistema de entrega.
